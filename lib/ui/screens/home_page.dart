@@ -18,18 +18,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() {
-    super.initState();
-    initData();
-  }
-
-  void initData() async {
-    final dataProvider =
-        Provider.of<CategoryDataProvider>(context, listen: false);
-    await dataProvider.initData();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final dataProvider = Provider.of<CategoryDataProvider>(context);
     return Scaffold(

@@ -1,5 +1,5 @@
 import 'package:dailynews/repositories/data_repository.dart';
-import 'package:dailynews/ui/screens/home_page.dart';
+import 'package:dailynews/ui/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => const HomePage(),
+          '/': (context) => const LoadingScreen(),
         },
       ),
     );

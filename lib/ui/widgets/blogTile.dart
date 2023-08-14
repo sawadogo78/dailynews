@@ -28,20 +28,28 @@ class BlogTile extends StatelessWidget {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(7.0),
-              child: CachedNetworkImage(
-                imageUrl: article.urlToImage,
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) {
-                  return Text(
-                    'No image fund for this article',
-                    style: GoogleFonts.abel(
-                      color: Colors.black,
-                      fontSize: 12,
+              child: article.urlToImage == null
+                  ? Center(
+                      child: Text(
+                        'No image for thi article',
+                        style: GoogleFonts.pacifico(
+                            color: Colors.red, fontSize: 20),
+                      ),
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: article.urlToImage!,
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) {
+                        return Text(
+                          'No image fund for this article',
+                          style: GoogleFonts.abel(
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
             ),
           ),
           const SizedBox(
@@ -59,7 +67,9 @@ class BlogTile extends StatelessWidget {
             height: 5,
           ),
           Text(
-            article.description,
+            article.description == null
+                ? 'No description fund'
+                : article.description!,
             style: GoogleFonts.poppins(color: Colors.black54),
           )
         ],
